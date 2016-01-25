@@ -1,7 +1,0 @@
-{
-	"IPTABLES":[
-		"-I INPUT -j ACCEPT",
-		"-I OUTPUT -j ACCEPT",
-		"-I FORWARD -j DROP"
-	]
-}
