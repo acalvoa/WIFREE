@@ -5,5 +5,5 @@
 * Ejecutable de WIFREE
 *@bugs No conocidos
 */
-var core = require('./core/core.js');
+var core = require('./core/wifree.js');
 core.start();
