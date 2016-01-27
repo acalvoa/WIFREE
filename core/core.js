@@ -7,6 +7,7 @@ var methods = {
 		var cf = config.getConfig();
 		config.setEnv(cf.GLOBAL.ENVIRONMENT);
 		console.log("\nIniciando WIFREE en modo "+cf.GLOBAL.ENVIRONMENT);
+		stack.clear();
 		stack.queued(iptables.start);
 		stack.queued(webserver.start);
 		stack.start();

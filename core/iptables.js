@@ -1,5 +1,6 @@
 var config  = require('./config.js');
 var service  = require('./services.js');
+var stack = require('./stack.js');
 var cf;
 var methods = {
 	config: function(STACK, INDEX, CALLBACK){
@@ -13,7 +14,8 @@ var methods = {
 		}
 		else
 		{
-			if(typeof CALLBACK != "undefined") CALLBACK();
+			var callback = stack.unqueued();
+			if(typeof callback != "undefined") callback.action(callback.args);
 			return;
 		}
 	},
