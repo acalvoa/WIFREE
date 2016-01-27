@@ -8,6 +8,7 @@ var methods = {
 		if(typeof INDEX == "undefined") INDEX = 0;
 		if(typeof STACK[INDEX] != "undefined"){
 			service.exec("iptables "+methods.clean(STACK[INDEX]));
+			//console.log(methods.clean(STACK[INDEX]));
 			methods.config(STACK, (INDEX+1), CALLBACK);
 		}
 		else
