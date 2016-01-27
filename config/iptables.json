@@ -5,8 +5,8 @@
 			"-N internet -t mangle",
 			"-t mangle -A PREROUTING -j internet",
 			"-t mangle -A internet -j MARK --set-mark 99",
-			"-t nat -A PREROUTING -m mark --mark 99 -p tcp --dport 80 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
-			"-t filter -A FORWARD -m mark --mark 99 -j DROP",
+			"-t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
+			"-t filter -A FORWARD  -j DROP",
 			"-I INPUT -i $%IN% -j ACCEPT",
 			"-I INPUT -o $%IN% -j ACCEPT",
 			"-I INPUT -i $%OUT% -d 192.168.10.1 -j ACCEPT",
@@ -20,7 +20,7 @@
 			"-t filter -A INPUT -m mark --mark 99 -j DROP",
 			"-A FORWARD -i $%IN% -o $%OUT% -m state --state ESTABLISHED,RELATED -j ACCEPT",
 			"-A FORWARD -i $%OUT% -o $%IN% -j ACCEPT",
-			"-t nat -A POSTROUTING -o $%IN% -j MASQUERADE"
+			"-t nat -A POSTROUTING  -j MASQUERADE"
 		],
 		"DEVELOPER": [
 			"-F",
