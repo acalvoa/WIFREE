@@ -9,7 +9,7 @@ var methods = {
 		console.log("\nIniciando WIFREE en modo "+cf.GLOBAL.ENVIRONMENT);
 		stack.queued(iptables.start);
 		stack.queued(webserver.start);
-		start.start();
+		stack.start();
 	}
 }
 // INDICAMOS LOS MODULOS A EXPORTAR
