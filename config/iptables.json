@@ -1,11 +1,16 @@
 {
 	"CONFIG":{
 		"PRODUCTION": [
+			"-F",
 			"-N internet -t mangle",
 			"-t mangle -A PREROUTING -j internet",
 			"-t mangle -A internet -j MARK --set-mark 99",
 			"-t nat -A PREROUTING -m mark --mark 99 -p tcp --dport 80 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
 			"-t filter -A FORWARD -m mark --mark 99 -j DROP",
+			"-I INPUT -i $%IN% -j ACCEPT",
+			"-I INPUT -o $%IN% -j ACCEPT",
+			"-I INPUT -i lo -j ACCEPT",
+			"-I INPUT -o lo -j ACCEPT",
 			"-t filter -A INPUT -p tcp --dport 80 -j ACCEPT",
 			"-t filter -A INPUT -p udp --dport 53 -j ACCEPT",
 			"-t filter -A INPUT -m mark --mark 99 -j DROP",
@@ -14,6 +19,7 @@
 			"-t nat -A POSTROUTING -o $%IN% -j MASQUERADE"
 		],
 		"DEVELOPER": [
+			"-F",
 			"-A PREROUTING -t nat -i eth0 -p tcp -d MI.DIRECCION.IP.REAL --dport 80 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
 			"-A FORWARD -i eth0 -p tcp -d $%WEBSERVER% --dport 80 -j ACCEPT"
 		]
