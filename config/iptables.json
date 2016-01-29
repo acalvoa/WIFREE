@@ -1,25 +1,11 @@
 {
 	"CONFIG":{
 		"PRODUCTION": [
-			"-F",
-			"-N internet -t mangle",
-			"-t mangle -A PREROUTING -j internet",
-			"-t mangle -A internet -j MARK --set-mark 99",
+			"-t nat -F",
+			"-t mangle -F",
+			"-t filter -F",
 			"-t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
 			"-t nat -A PREROUTING -p tcp --dport 443 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
-			"-t filter -A FORWARD  -j DROP",
-			"-I INPUT -i $%IN% -j ACCEPT",
-			"-I INPUT -o $%IN% -j ACCEPT",
-			"-I INPUT -i $%OUT% -d 192.168.10.1 -j ACCEPT",
-			"-I INPUT -o $%OUT% -s 192.168.10.1 -j ACCEPT",
-			"-I OUTPUT -o $%OUT% -s 192.168.10.1 -j ACCEPT",
-			"-I OUTPUT -i $%OUT% -d 192.168.10.1 -j ACCEPT", 
-			"-I INPUT -i lo -j ACCEPT",
-			"-I INPUT -o lo -j ACCEPT",
-			"-t filter -A INPUT -p tcp --dport 80 -j ACCEPT",
-			"-t filter -A INPUT -p tcp --dport 443 -j ACCEPT",
-			"-t filter -A INPUT -p udp --dport 53 -j ACCEPT",
-			"-t filter -A INPUT -j DROP",
 			"-A FORWARD -i $%IN% -o $%OUT% -m state --state ESTABLISHED,RELATED -j ACCEPT",
 			"-A FORWARD -i $%OUT% -o $%IN% -j ACCEPT",
 			"-t nat -A POSTROUTING  -j MASQUERADE"
