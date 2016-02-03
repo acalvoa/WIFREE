@@ -4,7 +4,6 @@ var stack = require('./stack.js');
 var cf;
 var methods = {
 	config: function(STACK, INDEX, CALLBACK){
-		console.log("APLICANDO NORMAS DE IPTABLES.")
 		if(typeof INDEX == "function") CALLBACK = INDEX, INDEX = 0;
 		if(typeof INDEX == "undefined") INDEX = 0;
 		if(typeof STACK[INDEX] != "undefined"){
@@ -33,6 +32,7 @@ var methods = {
 	},
 	start: function(){
 		cf = config.getConfig();
+		console.log("APLICANDO NORMAS DE IPTABLES.");
 		methods.config(cf.IPTABLES.CONFIG);
 	},
 	clean: function(line){
