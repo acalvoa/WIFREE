@@ -1,0 +1,21 @@
+{
+  "name": "conFusion",
+  "authors": [
+    "Simon <simon.ig13@gmail.com>"
+  ],
+  "description": "Website for an awesome restaurant",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "confusion",
+    "Fusion",
+    "Restaurant"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "font-awesome": "~4.5.0"
+  }
+}
