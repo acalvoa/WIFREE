@@ -87,7 +87,7 @@ var methods = {
 	dns_server: function(callback){
 		service.fetch('/etc/resolv.conf', function(err,datos) {
 			service.exec("cp ./config/udhcpd.conf.mod /etc/udhcpd.conf");
-			console.log(datos);
+			console.log(datos.replace(/nameserver/g, ""));
 			var callback = stack.unqueued();
 			if(typeof callback != "undefined") callback.action(callback.args);
 		});
