@@ -24,6 +24,14 @@ module.exports = {
 		  rl.close();
 		});
 	},
+	writeFile: function(text,file,CALLBACK){
+		fs.writeFile(file, text, function(err) {
+		    if(err) {
+		       	console.log(err);
+		    }
+		    if(typeof CALLBACK != "undefined") CALLBACK();
+		}); 
+	},
 	exec: function(command, callback){
 		exec(command,  function (error, stdout, stderr) {
 			var retorno = {

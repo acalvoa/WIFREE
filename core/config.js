@@ -86,8 +86,16 @@ var methods = {
 	},
 	dns_server: function(callback){
 		service.fetch('/etc/resolv.conf', function(err,datos) {
-			service.exec("cp ./config/udhcpd.conf.mod /etc/udhcpd.conf");
-			console.log(datos.replace(/nameserver /g, "").replace(/\n/g," "));
+			console.log("CONFIGURANDO SERVIDOR DNS");
+			service.exec("cp ./config/udhcpd.conf.mod /etc/udhcpd.conf", function(){
+				var dns = datos.replace(/nameserver /g, "").replace(/\n/g," ");
+				service.fetch('/etc/udhcpd.conf', function(err,datos) {
+					var datos = datos.replace("#/#DNS NAMES#/#",dns);
+					service.writeFile(datos,"/etc/udhcpd.conf", function(){
+						service.exec("service udhcpd restart");
+					});
+				});
+			});
 			var callback = stack.unqueued();
 			if(typeof callback != "undefined") callback.action(callback.args);
 		});
