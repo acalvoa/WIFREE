@@ -1,4 +1,4 @@
-#!/usr/bin/nodejs
+#!/usr/local/bin/node
 /* 
 *@file wifree.js
 *@brief WIFREE

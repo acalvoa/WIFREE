@@ -1,6 +1,6 @@
 var fs = require('fs');
 var exec = require('child_process').exec;
-var sys = require("sys");
+var sys = require("util");
 module.exports = {
 	clear: function(){
 		process.stdout.write('\u001B[2J\u001B[0;0f');
