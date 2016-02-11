@@ -11,9 +11,12 @@
 			"-t nat -A POSTROUTING  -j MASQUERADE"
 		],
 		"DEVELOPER": [
-			"-F",
-			"-A PREROUTING -t nat -i eth0 -p tcp -d MI.DIRECCION.IP.REAL --dport 80 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
-			"-A FORWARD -i eth0 -p tcp -d $%WEBSERVER% --dport 80 -j ACCEPT"
+			"-t nat -F",
+			"-t mangle -F",
+			"-t filter -F",
+			"-A FORWARD -i $%IN% -o $%OUT% -m state --state ESTABLISHED,RELATED -j ACCEPT",
+			"-A FORWARD -i $%OUT% -o $%IN% -j ACCEPT",
+			"-t nat -A POSTROUTING  -j MASQUERADE"
 		]
 	},
 	"ADAPTER":{
@@ -22,7 +25,7 @@
 			"OUT": "wlan0"
 		},
 		"DEVELOPER":{
-			"IN": "wlan0",
+			"IN": "eth0",
 			"OUT": "wlan0"
 		}
 	}
