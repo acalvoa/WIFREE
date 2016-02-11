@@ -84,11 +84,17 @@ var methods = {
 			if(typeof callback != "undefined") callback.action(callback.args);
 	    });
 	},
+	dns_server: function(callback){
+		service.fetch('/etc/resolv.conf', function(err,datos) {
+			console.log(datos);
+		});
+	},
 	continue: function(args){
 		if(typeof args != "undefined" && typeof args.callback != "undefined") args.callback();
 	},
 	load: function(cb){
 		console.log("CARGANDO CONFIGURACIONES");
+		stack.queued(methods.dns_server);
 		stack.queued(methods.httpServer);
 		stack.queued(methods.iptables);
 		stack.queued(methods.global);
