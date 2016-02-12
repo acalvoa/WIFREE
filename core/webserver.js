@@ -9,6 +9,9 @@ module.exports = {
 		    res.sendFile(path.join(__dirname+"/../services"+ '/redirect.html'));
 		});
 		app.get('/*', function(req, res) {
+		    res.sendFile(path.join(__dirname+"/../services"+ '/redirect.html'));
+		});
+		app.get('/wifree/*', function(req, res) {
 		    res.sendFile(path.join(__dirname+"/../webapp"+ '/'+req.url), function(err){
 		    	if (err) {
 			      res.status(err.status).end();
