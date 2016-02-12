@@ -1,6 +1,6 @@
 var express = require('express');
-var config  = require('./config.js');
-var iptables = require('./services.js');
+var config  = require('../core/config.js');
+var iptables = require('../core/iptables.js');
 module.exports = {
 	allow: function(datos){
 
