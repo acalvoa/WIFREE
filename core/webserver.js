@@ -11,6 +11,8 @@ module.exports = {
 				if(err) {
 					service.close();
 				}
+				datos = datos.replace("[[IP]]", WS_CONFIG.GLOBAL.WIFI_IP);
+				datos = datos.replace("[[PORT]]", WS_CONFIG.WEBSERVER.PORT);
 				res.send(datos);
 		    });
 		});
@@ -28,9 +30,10 @@ module.exports = {
 					if(err) {
 						service.close();
 					}
+					datos = datos.replace("[[IP]]", WS_CONFIG.GLOBAL.WIFI_IP);
+					datos = datos.replace("[[PORT]]", WS_CONFIG.WEBSERVER.PORT);
 					res.send(datos);
 			    });
-				
 			}
 		    
 		});
