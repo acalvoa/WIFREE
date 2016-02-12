@@ -31,10 +31,14 @@ var methods = {
 		});
 	},
 	allow: function(MAC){
-		
+		service.exec("iptables -t mangle -A internet -m mac --mac-source "+MAC+" -j RETURN", function(stdout){
+			return true;
+		});		
 	},
 	fballow: function(MAC){
-
+		service.exec("iptables -t mangle -A facebooklist -m mac --mac-source "+MAC+" -j facebookip", function(stdout){
+			return true;
+		});		
 	},
 	conntrack: function(){
 
