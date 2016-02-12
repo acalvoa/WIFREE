@@ -13,11 +13,7 @@ var exports = require('./exports.js');
 // INCLUIMOS LOS METODOS A UTILIZAR DURANTE LA REALIZACION DE INICIALIZACION
 methods = {
 	start: function(callback){
-<<<<<<< HEAD
-		fs.readFile('../package.json', 'utf8', function(err,datos) {
-=======
 		fs.readFile(exports.PATH+'/package.json', 'utf8', function(err,datos) {
->>>>>>> 85df7e709860231f8b1f50d7e634407521d828ef
 			if(err) {
 				console.log("ERROR LA HOJA DE METADATA NO EXISTE");
 				service.close();
