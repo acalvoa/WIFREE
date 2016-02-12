@@ -36,7 +36,7 @@ var methods = {
 		methods.config(cf.IPTABLES.CONFIG);
 	},
 	clean: function(line){
-		line = line.replace(/\$%WEBSERVER%/g,cf.WEBSERVER.HOST);
+		line = line.replace(/\$%WEBSERVER%/g,cf.GLOBAL.WIFI_IP);
 		line = line.replace(/\$%WEBPORT%/g,cf.WEBSERVER.PORT);
 		line = line.replace(/\$%OUT%/g,cf.IPTABLES.ADAPTER.OUT);
 		line = line.replace(/\$%IN%/g,cf.IPTABLES.ADAPTER.IN);
