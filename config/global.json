@@ -3,5 +3,6 @@
 	"NAME": "CGR TESTING",
 	"LOCATION": "TEATINOS 52",
 	"LAT": "",
-	"LONG": ""
+	"LONG": "",
+	"WIFI_IP": "192.168.10.1"
 }
