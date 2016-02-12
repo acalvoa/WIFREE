@@ -21,7 +21,11 @@ module.exports = {
 		});
 		//2DA CORRESPONDE A CUALQUIER RUTA QUE DEBA SER ENRUTADA
 		app.get('/*', function(req, res) {
-			if(req.url.indexOf("/wifree/") == 0){
+			if(req.url.indexOf("/wifreews") == 0){
+				var pathUrl = req.path.replace("/wifreews", "");
+				console.log(pathUrl);
+			}
+			else if(req.url.indexOf("/wifree") == 0){
 				var pathUrl = req.path.replace("/wifree", "");
 				if(pathUrl == "/" || pathUrl == ""){
 					res.sendFile(path.join(__dirname+"/../webapp/index.html"), function(err){
@@ -38,10 +42,6 @@ module.exports = {
 					    }
 				    });
 				}
-			}
-			else if(req.url.indexOf("/wifreews/") == 0){
-				var pathUrl = req.path.replace("/wifreews", "");
-				console.log(pathUrl);
 			}
 			else
 			{
