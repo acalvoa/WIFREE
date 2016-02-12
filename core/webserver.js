@@ -6,6 +6,8 @@ module.exports = {
 		var WS_CONFIG = config.getConfig();
 		var app = express();
 		var path = require('path');
+		//UBICAMOS LAS PETICIONES GET AL SERVIDOR
+		//1ERA PETICION CORRESPONDE AL PATH SIN ELEMENTO INDICADOR
 		app.get('/', function(req, res) {
 		    service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
 				if(err) {
@@ -16,6 +18,7 @@ module.exports = {
 				res.send(datos);
 		    });
 		});
+		//2DA CORRESPONDE A CUALQUIER RUTA QUE DEBA SER ENRUTADA
 		app.get('/*', function(req, res) {
 			if(req.url.indexOf("/wifree/") == 0){
 				var pathUrl = req.path.replace("/wifree", "");

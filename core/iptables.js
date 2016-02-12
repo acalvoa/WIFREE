@@ -6,7 +6,13 @@ var methods = {
 	config: function(STACK, INDEX, CALLBACK){
 		if(typeof INDEX == "function") CALLBACK = INDEX, INDEX = 0;
 		if(typeof INDEX == "undefined") INDEX = 0;
-		if(typeof STACK[INDEX] != "undefined"){
+		if(typeof STACK[INDEX] != "undefined" || STACK[INDEX] == "$%FACEBOOKIP%"){
+			for(i=0; i<cf.FACEBOOK.IPLIST.length; i++){
+				service.exec("iptables -t mangle -A facebookip -s "+cf.FACEBOOK.IPLIST[0]+" -j MARK --set-mark 11");
+				service.exec("iptables -t mangle -A facebookip -d "+cf.FACEBOOK.IPLIST[0]+" -j MARK --set-mark 11");
+			}
+		}
+		else if(typeof STACK[INDEX] != "undefined"){
 			service.exec("iptables "+methods.clean(STACK[INDEX]));
 			//console.log(methods.clean(STACK[INDEX]));
 			methods.config(STACK, (INDEX+1), CALLBACK);
@@ -18,6 +24,11 @@ var methods = {
 			return;
 		}
 	},
+	getMACfromIP: function(ip){
+		service.exec("arp -n | grep "+ip+" | awk '{print $3}'", function(stdout){
+			return stdout.STDOUT;
+		});
+	}
 	allow: function(MAC){
 		
 	},
@@ -40,6 +51,7 @@ var methods = {
 		line = line.replace(/\$%WEBPORT%/g,cf.WEBSERVER.PORT);
 		line = line.replace(/\$%OUT%/g,cf.IPTABLES.ADAPTER.OUT);
 		line = line.replace(/\$%IN%/g,cf.IPTABLES.ADAPTER.IN);
+		line = line.replace(/\$%IPCRM%/g,cf.GLOBAL.CRM_SERVER);
 		return line;
 	}
 }
