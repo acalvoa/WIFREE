@@ -17,10 +17,8 @@ module.exports = {
 		    });
 		});
 		app.get('/*', function(req, res) {
-			console.log(req.url);
-			console.log(req.url.indexOf("/wifree/"))
+			console.log(req.query);
 			if(req.url.indexOf("/wifree/") == 0){
-				console.log("perro");
 				res.sendFile(path.join(__dirname+"/../webapp"+ '/'+req.url.replace("/wifree/", "")), function(err){
 			    	if (err) {
 				      res.status(err.status).end();
