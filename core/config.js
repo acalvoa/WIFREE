@@ -2,10 +2,11 @@ var service = require('./services.js');
 var stack = require('./stack.js');
 var core = require('./core.js');
 var _GLOBAL_CONFIG =  {};
+var exports = require('./exports.js');
 
 var methods = {
 	iptables: function(args){
-		service.fetch('./config/iptables.json', function(err,datos) {
+		service.fetch(exports.PATH+'/config/iptables.json', function(err,datos) {
 			if(err) {
 				console.log("ERROR LA HOJA DE CONFIGURACIONES IPTABLES, NO EXISTE.");
 				service.close();
@@ -21,7 +22,7 @@ var methods = {
 	    });
 	},
 	httpServer: function(callback){
-		service.fetch('./config/webserver.json', function(err,datos) {
+		service.fetch(exports.PATH+'/config/webserver.json', function(err,datos) {
 			if(err) {
 				console.log("ERROR LA HOJA DE CONFIGURACIONES WEBSERVER, NO EXISTE.");
 				service.close();
@@ -37,7 +38,7 @@ var methods = {
 	    });
 	},
 	CRMServer: function(callback){
-		service.fetch('./config/CRMserver.json', function(err,datos) {
+		service.fetch(exports.PATH+'/config/CRMserver.json', function(err,datos) {
 			if(err) {
 				console.log("ERROR LA HOJA DE CONFIGURACIONES CRMSERVER, NO EXISTE.");
 				service.close();
@@ -53,7 +54,7 @@ var methods = {
 	    });
 	},
 	global: function(callback){
-		service.fetch('./config/global.json', function(err,datos) {
+		service.fetch(exports.PATH+'/config/global.json', function(err,datos) {
 			if(err) {
 				console.log("ERROR LA HOJA DE CONFIGURACIONES GLOBALES, NO EXISTE.");
 				service.close();
@@ -69,7 +70,7 @@ var methods = {
 	    });
 	},
 	facebook: function(callback){
-		service.fetch('./config/facebook.json', function(err,datos) {
+		service.fetch(exports.PATH+'/config/facebook.json', function(err,datos) {
 			if(err) {
 				console.log("ERROR LA HOJA DE CONFIGURACIONES FACEBOOK, NO EXISTE.");
 				service.close();

@@ -9,10 +9,11 @@ var service = require('./services.js');
 var config = require('./config.js');
 var signal = require('./signals.js');
 var web = require('./webserver.js');
+var exports = require('./exports.js');
 // INCLUIMOS LOS METODOS A UTILIZAR DURANTE LA REALIZACION DE INICIALIZACION
 methods = {
 	start: function(callback){
-		fs.readFile('./package.json', 'utf8', function(err,datos) {
+		fs.readFile(exports.PATH+'/package.json', 'utf8', function(err,datos) {
 			if(err) {
 				console.log("ERROR LA HOJA DE METADATA NO EXISTE");
 				service.close();
