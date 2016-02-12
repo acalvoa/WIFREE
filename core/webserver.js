@@ -17,13 +17,23 @@ module.exports = {
 		    });
 		});
 		app.get('/*', function(req, res) {
-			console.log(req.originalUrl);
 			if(req.url.indexOf("/wifree/") == 0){
-				res.sendFile(path.join(__dirname+"/../webapp"+ '/'+req.url.replace("/wifree/", "")), function(err){
-			    	if (err) {
-				      res.status(err.status).end();
-				    }
-			    });
+				var path = req.path..replace("/wifree", "");
+				if(path == "/" || path == ""){
+					res.sendFile(path.join(__dirname+"/../webapp/index.html"), function(err){
+				    	if (err) {
+					      res.status(err.status).end();
+					    }
+				    });
+				}
+				else
+				{
+					res.sendFile(path.join(__dirname+"/../webapp"+ path), function(err){
+				    	if (err) {
+					      res.status(err.status).end();
+					    }
+				    });
+				}
 			}
 			else
 			{
