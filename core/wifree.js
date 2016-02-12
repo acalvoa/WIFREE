@@ -23,7 +23,8 @@ methods = {
 			console.log('***********************************');
 			console.log('* '+info.NAME+" "+info.CODENAME);
 			console.log('* VERSION: '+info.VERSION);
-			console.log('* DESARROLLADOR: '+info.DEVELOPER);
+			console.log('* DESARROLLADOR BACK-END: '+info.BACKEND);
+			console.log('* DESARROLLADOR FRONT-END: '+info.FRONTEND);
 			console.log('* FECHA: '+info.LASTUPDATE);
 			console.log('***********************************');
 			console.log(' ');
