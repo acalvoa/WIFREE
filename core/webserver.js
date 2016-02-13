@@ -25,7 +25,9 @@ module.exports = {
 				var pathUrl = req.path.replace("/wifreews/", "");
 				if(typeof ws[pathUrl] != "undefined"){
 					var webs = ws[pathUrl]
-					webs(req.query);
+					webs(req.query, function(){
+						res.send("OK");
+					});
 				}
 				else{
 					service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
