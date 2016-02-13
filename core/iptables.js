@@ -65,4 +65,4 @@ var methods = {
 module.exports.start = methods.start;
 module.exports.allow = methods.allow;
 module.exports.fballow = methods.fballow;
-module.exports.fballow = methods.getMACfromIP;
+module.exports.getMACfromIP = methods.getMACfromIP;
