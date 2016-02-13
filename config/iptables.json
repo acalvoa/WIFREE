@@ -19,6 +19,7 @@
 			"$%FACEBOOKIP%",
 			"-t mangle -A facebookip -j RETURN",
 			"-t mangle -A facebooklist -j RETURN",
+			"-t mangle -A PREROUTING -p tcp --dport 22 -j MARK --set-mark 15",
 			"-t nat -A PREROUTING -m mark --mark 10 -p tcp --dport 80 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
 			"-t nat -A PREROUTING -m mark --mark 10 -p tcp --dport 443 -j DNAT --to-destination $%WEBSERVER%:$%WEBPORT%",
 			"-t filter -A INPUT -m mark --mark 12 -j ACCEPT",
