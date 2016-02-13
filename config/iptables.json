@@ -37,7 +37,7 @@
 			"-t filter -A FORWARD -i $%IN% -o $%OUT% -m state --state ESTABLISHED,RELATED -j ACCEPT",
 			"-t filter -A FORWARD -i $%OUT% -o $%IN% -j ACCEPT",
 			"-t filter -A FORWARD -j DROP",
-			"-t nat -A POSTROUTING -o $%IN% -j MASQUERADE"
+			"-t nat -A POSTROUTING -j MASQUERADE"
 		],
 		"DEVELOPER": [
 			"-t nat -F",
