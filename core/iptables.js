@@ -27,7 +27,7 @@ var methods = {
 	},
 	getMACfromIP: function(ip, callback){
 		service.exec("arp -n | grep "+ip+" | awk '{print $3}'", function(stdout){
-			if(typeof callback != "undefined") callback(stdout.STDOUT.substring(0,16));
+			if(typeof callback != "undefined") callback(stdout.STDOUT.substring(0,17));
 		});
 	},
 	allow: function(MAC,callback){
