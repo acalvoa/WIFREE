@@ -17,7 +17,7 @@ module.exports = {
 		    });
 		});
 		app.get('/*', function(req, res) {
-			console.log(req.query);
+			console.log(req.path);
 			if(req.url.indexOf("/wifree/") == 0){
 				res.sendFile(path.join(__dirname+"/../webapp"+ '/'+req.url.replace("/wifree/", "")), function(err){
 			    	if (err) {
