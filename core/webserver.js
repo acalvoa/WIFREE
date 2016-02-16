@@ -6,7 +6,12 @@ module.exports = {
 		var app = express();
 		var path = require('path');
 		app.get('/', function(req, res) {
-		    res.sendFile(path.join(__dirname+"/../services"+ '/redirect.html'));
+		    service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
+				if(err) {
+					service.close();
+				}
+				res.send(datos);
+		    });
 		});
 		app.get('/*', function(req, res) {
 			if(req.url.indexOf("/wifree/") == 0){
@@ -18,10 +23,14 @@ module.exports = {
 			}
 			else
 			{
-				res.sendFile(path.join(__dirname+"/../services"+ '/redirect.html'));
+				service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
+					if(err) {
+						service.close();
+					}
+					res.send(datos);
+			    });
+				
 			}
-		});
-		app.get('/wifree/*', function(req, res) {
 		    
 		});
 		console.log("SERVIDOR WEB INICIADO")
