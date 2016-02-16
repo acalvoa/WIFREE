@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <title>Redirecting....</title>
 <script>
-	alert(window.location);
+	setTimeout(function(){
+		location.href = "http://192.168.10.1:7000/?n="+window.location;
+	}, 3000);
 </script>
 </head>
 <body>
