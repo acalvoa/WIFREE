@@ -1,5 +1,6 @@
 var express = require('express');
 var config  = require('./config.js');
+var service = require('./services.js');
 module.exports = {
 	start: function(){
 		var WS_CONFIG = config.getConfig();
