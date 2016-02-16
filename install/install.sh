@@ -13,6 +13,8 @@ sudo update-rc.d wifree enable
 sudo update-rc.d hostapd enable
 sudo update-rc.d udhcpd enable
 # INICIAMOS LOS SERVICIOS
+systemctl daemon-reload
 sudo service udhcpd start
 sudo service hostapd start
+sudo service wifree start
 exit

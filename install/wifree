@@ -1,45 +1,61 @@
-# Script template para demonios
 #!/bin/sh
- 
-programa=/home/WIFREE   #HOME del programa a ejecutar
-startup=$programa/wifree.js   #código para iniciar el programa
-#shutdown=$programa/bin/shutdown.sh #código para parar el programa
- 
-start(){
- echo -n $"Starting service: "
- $startup
- RETVAL=$?
- echo
-}
- 
-stop(){
- echo -n $"Stopping service: "
- #$shutdown
- RETVAL=$?
- echo
-}
- 
-restart(){
- stop
- sleep 10
- start
-}
- 
-# Dependiento del parametro que se le pase
-#start - stop - restart ejecuta la función correspondiente.
+
+### BEGIN INIT INFO
+# Provides:		wifree
+# Required-Start:	$remote_fs
+# Required-Stop:	$remote_fs
+# Should-Start:		$network
+# Should-Stop:
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:	Wifree Router software control
+# Description:		Control Software of wifree hotspot Router
+### END INIT INFO
+
+#PATH=/sbin:/bin:/usr/sbin:/usr/bin
+#export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+#DAEMON_SBIN=forever
+#DAEMON_BIN_PATH=/var/run/forever
+#WIFREE_FOLDER=/home/WIFREE
+#WIFREE_EXEC=wifree.js
+#forever --sourceDir=/home/WIFREE -p /var/run/forever start wifree.js
+#DAEMON_STOP=forever stop --sourceDir=/home/WIFREE wifree.js
+#DAEMON_DEFS=/etc/default/wifree
+#DAEMON_CONF=
+NAME=wifree
+DESC="Wifree Router Control"
+PIDFILE=/run/wifree.pid
+
+#[ -x "$DAEMON_SBIN" ] || exit 0
+##[ -s "$DAEMON_DEFS" ] && . /etc/default/hostapd
+#[ -n "$DAEMON_CONF" ] || exit 0
+
+#DAEMON_OPTS_START="--sourceDir=$WIFREE_FOLDER -p $DAEMON_BIN_PATH start $WIFREE_EXEC"
+#DAEMON_OPTS_STOP="stop --sourceDir=$WIFREE_FOLDER $WIFREE_EXEC"
+
+#. /lib/lsb/init-functions
+
 case "$1" in
-start)
- start
- ;;
-stop)
- stop
- ;;
-restart)
- restart
- ;;
-*)
- echo $"Usar: $0 {start|stop|restart}"
- exit 1
+  start)
+	log_daemon_msg "Starting $DESC" "$NAME"
+	exec start-stop-daemon --start --exec /usr/local/bin/forever -- start /home/WIFREE/wifree.js >/dev/null
+	log_end_msg "$?"
+	;;
+  stop)
+	log_daemon_msg "Stopping $DESC" "$NAME"
+	exec start-stop-daemon --start --exec /usr/local/bin/forever -- stop /home/WIFREE/wifree.js >/dev/null
+	log_end_msg "$?"
+	;;
+  restart|force-reload)
+  	$0 stop
+	sleep 8
+	$0 start
+	;;
+  *)
+	N=/etc/init.d/$NAME
+	echo "Usage: $N {start|stop|restart|force-reload}" >&2
+	exit 1
+	;;
 esac
- 
+
 exit 0
