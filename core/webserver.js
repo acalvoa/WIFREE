@@ -6,7 +6,7 @@ module.exports = {
 		var app = express();
 		var path = require('path');
 		app.get('/', function(req, res) {
-		    res.sendFile(path.join(__dirname+"/../webapp"+ '/index.html'));
+		    res.sendFile(path.join(__dirname+"/../services"+ '/redirect.html'));
 		});
 		app.get('/*', function(req, res) {
 		    res.sendFile(path.join(__dirname+"/../webapp"+ '/'+req.url), function(err){
