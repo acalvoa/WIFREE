@@ -18,7 +18,7 @@ module.exports = {
 		});
 		app.get('/*', function(req, res) {
 			if(req.url.indexOf("/wifree/") == 0){
-				var path = req.path..replace("/wifree", "");
+				var path = req.path.replace("/wifree", "");
 				if(path == "/" || path == ""){
 					res.sendFile(path.join(__dirname+"/../webapp/index.html"), function(err){
 				    	if (err) {
