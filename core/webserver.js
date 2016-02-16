@@ -9,6 +9,7 @@ module.exports = {
 		    res.sendFile(path.join(__dirname+"/../services"+ '/redirect.html'));
 		});
 		app.get('/*', function(req, res) {
+			console.log(req);
 		    res.sendFile(path.join(__dirname+"/../services"+ '/redirect.html'));
 		});
 		app.get('/wifree/*', function(req, res) {
