@@ -12,7 +12,7 @@ var web = require('./webserver.js');
 // INCLUIMOS LOS METODOS A UTILIZAR DURANTE LA REALIZACION DE INICIALIZACION
 methods = {
 	start: function(callback){
-		fs.readFile('./package.json', 'utf8', function(err,datos) {
+		fs.readFile('../package.json', 'utf8', function(err,datos) {
 			if(err) {
 				console.log("ERROR LA HOJA DE METADATA NO EXISTE");
 				service.close();
