@@ -1,7 +1,6 @@
 var service = require('./services.js');
 var stack = require('./stack.js');
 var core = require('./core.js');
-var process = require('process');
 var _GLOBAL_CONFIG =  {};
 var exports = require('./exports.js');
 
@@ -68,8 +67,11 @@ var methods = {
 			_GLOBAL_CONFIG['GLOBAL'] = CONFIG;
 			//CARGAMOS CONFIGURACIONES DESDE LA LINEA DE COMANDOS
 			process.argv.forEach(function (val, index, array) {
+			  	if(index < 2) return;
 			  	var command = val.split("=");
-			  	console.log(command);
+			  	if(command.length > 1){
+			  		_GLOBAL_CONFIG.GLOBAL[command[0].toUpperCase()] = command[1].toUpperCase();
+			  	}
 			});
 			var callback = stack.unqueued();
 			if(typeof callback != "undefined") callback.action(callback.args);
