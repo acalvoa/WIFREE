@@ -21,6 +21,7 @@ module.exports = {
 		});
 		//2DA CORRESPONDE A CUALQUIER RUTA QUE DEBA SER ENRUTADA
 		app.get('/*', function(req, res) {
+			console.log(req.url;
 			console.log(req.url.indexOf("/wifree"));
 			if(req.url.indexOf("/wifreews/") == 0){
 				var pathUrl = req.path.replace("/wifreews/", "");
