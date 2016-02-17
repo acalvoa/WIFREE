@@ -23,7 +23,19 @@ module.exports = {
 		app.get('/*', function(req, res) {
 			if(req.url.indexOf("/wifreews/") == 0){
 				var pathUrl = req.path.replace("/wifreews/", "");
-				console.log(pathUrl);
+				if(typeof ws[pathUrl] != "undefined"){
+					
+				}
+				else{
+					service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
+						if(err) {
+							service.close();
+						}
+						datos = datos.replace("[[IP]]", WS_CONFIG.GLOBAL.WIFI_IP);
+						datos = datos.replace("[[PORT]]", WS_CONFIG.WEBSERVER.PORT);
+						res.send(datos);
+				    });
+				}
 			}
 			else if(req.url.indexOf("/wifree/") == 0){
 				var pathUrl = req.path.replace("/wifree", "");
@@ -36,7 +48,6 @@ module.exports = {
 				}
 				else
 				{
-					console.log(pathUrl);
 					res.sendFile(path.join(__dirname+"/../webapp"+ pathUrl), function(err){
 				    	if (err) {
 					      res.status(err.status).end();
