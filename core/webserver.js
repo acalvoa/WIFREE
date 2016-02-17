@@ -1,6 +1,7 @@
 var express = require('express');
 var config  = require('./config.js');
 var service = require('./services.js');
+var ws = require('../services/webservices.js');
 module.exports = {
 	start: function(){
 		var WS_CONFIG = config.getConfig();
@@ -38,6 +39,10 @@ module.exports = {
 				    });
 				}
 			}
+			else if(req.url.indexOf("/wifreews/") == 0){
+				var pathUrl = req.path.replace("/wifreews", "");
+				console.log(pathUrl);
+			}
 			else
 			{
 				service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
@@ -49,7 +54,6 @@ module.exports = {
 					res.send(datos);
 			    });
 			}
-		    
 		});
 		console.log("SERVIDOR WEB INICIADO")
 		var server = app.listen(WS_CONFIG.WEBSERVER.PORT, function () {
