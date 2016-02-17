@@ -28,7 +28,7 @@ var methods = {
 		service.exec("arp -n | grep "+ip+" | awk '{print $3}'", function(stdout){
 			return stdout.STDOUT;
 		});
-	}
+	},
 	allow: function(MAC){
 		
 	},
