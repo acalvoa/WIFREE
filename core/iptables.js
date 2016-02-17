@@ -6,7 +6,7 @@ var methods = {
 	config: function(STACK, INDEX, CALLBACK){
 		if(typeof INDEX == "function") CALLBACK = INDEX, INDEX = 0;
 		if(typeof INDEX == "undefined") INDEX = 0;
-		if(typeof STACK[INDEX] != "undefined" || STACK[INDEX] == "$%FACEBOOKIP%"){
+		if(typeof STACK[INDEX] != "undefined" && STACK[INDEX] == "$%FACEBOOKIP%"){
 			for(i=0; i<cf.FACEBOOK.IPLIST.length; i++){
 				service.exec("iptables -t mangle -A facebookip -s "+cf.FACEBOOK.IPLIST[0]+" -j MARK --set-mark 11");
 				service.exec("iptables -t mangle -A facebookip -d "+cf.FACEBOOK.IPLIST[0]+" -j MARK --set-mark 11");
