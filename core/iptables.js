@@ -37,6 +37,7 @@ var methods = {
 	},
 	fballow: function(MAC){
 		service.exec("iptables -t mangle -A facebooklist -m mac --mac-source "+MAC+" -j facebookip", function(stdout){
+			console.log("ACCESO A "+MAC);
 			return true;
 		});		
 	},
