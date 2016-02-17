@@ -30,14 +30,14 @@ var methods = {
 			return stdout.STDOUT;
 		});
 	},
-	allow: function(MAC){
+	allow: function(MAC,callback){
 		service.exec("iptables -t mangle -A internet -m mac --mac-source "+MAC+" -j RETURN", function(stdout){
-			return true;
+			console.log("ACCESO A "+MAC);
+			if(typeof callback != "undefined") callback();
 		});		
 	},
 	fballow: function(MAC){
 		service.exec("iptables -t mangle -A facebooklist -m mac --mac-source "+MAC+" -j facebookip", function(stdout){
-			console.log("ACCESO A "+MAC);
 			return true;
 		});		
 	},
