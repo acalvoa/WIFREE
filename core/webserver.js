@@ -25,6 +25,7 @@ module.exports = {
 				var pathUrl = req.path.replace("/wifreews/", "");
 				console.log(pathUrl);
 			}
+			console.log(req.url.indexOf("/wifree"));
 			else if(req.url.indexOf("/wifree") == 0){
 				var pathUrl = req.path.replace("/wifree", "");
 				if(pathUrl == "/" || pathUrl == ""){
@@ -46,7 +47,6 @@ module.exports = {
 			}
 			else
 			{
-				console.log(pathUrl);
 				service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
 					if(err) {
 						service.close();
