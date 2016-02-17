@@ -16,7 +16,6 @@
 			"-t mangle -A internet -j MARK --set-mark 10",
 			"-t mangle -A internet -j RETURN",
 			"-t mangle -A PREROUTING -m mark --mark 10 -j facebooklist",
-			"$%FACEBOOKIP%",
 			"-t mangle -A facebookip -j RETURN",
 			"-t mangle -A facebooklist -j RETURN",
 			"-t mangle -A PREROUTING -p tcp --dport 53 -j MARK --set-mark 15",
@@ -31,7 +30,7 @@
 			"-t filter -A INPUT -j DROP",
 			"-t filter -A FORWARD -m mark --mark 10 -j DROP",
 			"-t filter -A FORWARD -i $%IN% -o $%OUT% -m state --state ESTABLISHED,RELATED -j ACCEPT",
-			"-A FORWARD -i $%OUT% -o $%IN% -j ACCEPT",
+			"-t filter -A FORWARD -i $%OUT% -o $%IN% -j ACCEPT",
 			"-t filter -A FORWARD -j DROP",
 			"-t nat -A POSTROUTING -j MASQUERADE"
 		],
