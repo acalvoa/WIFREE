@@ -46,6 +46,7 @@ module.exports = {
 			}
 			else
 			{
+				console.log(pathUrl);
 				service.fetch(path.join(__dirname+"/../services"+ '/redirect.html'), function(err,datos) {
 					if(err) {
 						service.close();
