@@ -4,5 +4,6 @@
 	"LOCATION": "TEATINOS 52",
 	"LAT": "",
 	"LONG": "",
-	"WIFI_IP": "192.168.10.1"
+	"WIFI_IP": "192.168.10.1",
+	"CRM_SERVER": "69.28.88.224"
 }

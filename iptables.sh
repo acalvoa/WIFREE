@@ -11,9 +11,9 @@ iptables -N facebookip -t mangle
 # COMENZAMOS CON LA REGLA PARA LA TABLA MANGLE CADENA PREROUTING
 iptables -t mangle -A PREROUTING -j internet
 # VERIFICAMOS SI ES UNA MAC CONOCIDA (LISTA DINAMICA) 
-iptables -t mangle -A internet -m mac --mac-source [[MAC]] -j RETURN
+#iptables -t mangle -A internet -m mac --mac-source [[MAC]] -j RETURN
 # VERIFICAMOS SI LA PETICION PROVIENE DEL CRM Y DEVOLVEMOS A PREROUTING EN CASO DE SER CIERTO
-iptables -t mangle -A internet -s [[IPCRM]] -j MARK --set-mark 12
+#iptables -t mangle -A internet -s [[IPCRM]] -j MARK --set-mark 12
 iptables -t mangle -A internet -m mark --mark 12 -j RETURN
 # EN CASO CONTRARIO MARCAMOS EL PAQUETE y DEVOLVEMOS A LA CADENA PREROUTING
 iptables -t mangle -A internet -j MARK --set-mark 10
@@ -23,8 +23,8 @@ iptables -t mangle -A PREROUTING -m mark --mark 10 -j facebooklist
 # CORROBORAMOS SI ES UNA MAC AUTORIZADA PARA TENER ACCESO TEMPORAL (LISTA DINAMICA)
 iptables -t mangle -A facebooklist -m mac --mac-source [[MACFB]] -j facebookip 
 # VERIFICAMOS CONTRA LA GRANJA DE IPS DE FACEBOOK y MARCAMOS EL PAQUETE COMO 12 EN CASO DE SER CIERTO (LISTA DINAMICA)
-iptables -t mangle -A facebookip -s [[IPFACEBOOK]]/[[MASK]] -j MARK --set-mark 11
-iptables -t mangle -A facebookip -d [[IPFACEBOOK]]/[[MASK]] -j MARK --set-mark 11
+#iptables -t mangle -A facebookip -s [[IPFACEBOOK]]/[[MASK]] -j MARK --set-mark 11
+#iptables -t mangle -A facebookip -d [[IPFACEBOOK]]/[[MASK]] -j MARK --set-mark 11
 # Y EN AMBOS CASO DEVOLVEMOS A LA CADENA PREROUTING PASANDO POR FACEBOOKLIST SI ES NECESARIO
 iptables -t mangle -A facebookip -j RETURN
 # LABEL A:
@@ -32,8 +32,8 @@ iptables -t mangle -A facebooklist -j RETURN
 # SE PASA A LA TABLA NAT CADENA PREROUTING
 # SE VERIFICA SI EL PAQUETE ESTA MARCADO COMO 10. EN CASO FAVORABLE SE VERIFICA SI LA PETICION ES EN EL PUERTO 80 o 443. EN CASO CONTRARIO SE DEVUELVE --> LABEL B
 # SI CONCUERDA CON LA PETICION ANTERIOR (TRUE) SE HACE DNAT Y LUEGO DE DEVUELVE
-iptables -t nat -A PREROUTING -m mark --mark 10 -p tcp --dport 80 -j DNAT --to-destination [[SERVERROUTER]]:[[PORTROUTER]]
-iptables -t nat -A PREROUTING -m mark --mark 10 -p tcp --dport 443 -j DNAT --to-destination [[SERVERROUTER]]:[[PORTROUTER]]
+#iptables -t nat -A PREROUTING -m mark --mark 10 -p tcp --dport 80 -j DNAT --to-destination [[SERVERROUTER]]:[[PORTROUTER]]
+#iptables -t nat -A PREROUTING -m mark --mark 10 -p tcp --dport 443 -j DNAT --to-destination [[SERVERROUTER]]:[[PORTROUTER]]
 # LABEL B: ES UNA ACCION DEFAULT POR TERMINO DE LA CADENA
 # CAMINO 1 : INPUT (PAQUETE LOCAL) / SALTAMOS CADENA MANGLE
 # VERIFICAMOS SI TIENE LA MARCA 12 Y ACEPTAMOS EN CASO DE TENERLA
