@@ -18,6 +18,7 @@
 			"-t mangle -A internet -j MARK --set-mark 10",
 			"-t mangle -A internet -j RETURN",
 			"-t mangle -A PREROUTING -m mark --mark 10 -j facebooklist",
+			"$%FACEBOOKIP%",
 			"-t mangle -A facebookip -j RETURN",
 			"-t mangle -A facebooklist -j RETURN",
 			"-t mangle -A PREROUTING -m mark --mark 10 -j servicios",
