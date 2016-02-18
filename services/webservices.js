@@ -8,7 +8,7 @@ module.exports = {
 		});
 	},
 	allowme: function(req,res,callback){
-		console.log(req.connection.remoteAddress);
+		console.log(req.connection.remoteAddress.replace(/::.*:/g,""));
 		iptables.getMACfromIP(req.connection.remoteAddress);
 	}
 };
