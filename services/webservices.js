@@ -10,7 +10,9 @@ module.exports = {
 	allowme: function(req,res,callback){
 		var ip = req.connection.remoteAddress.replace(/::.*:/g,"");
 		iptables.getMACfromIP(ip,function(stdout){
-			console.log(stdout);
+			iptables.allow(stdout, function(){
+				res.send("OK ACCESS: "+stdout);
+			});
 		});
 	}
 };
