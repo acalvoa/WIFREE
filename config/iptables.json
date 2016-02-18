@@ -16,6 +16,7 @@
 			"-t mangle -A internet -s $%IPCRM% -j MARK --set-mark 12",
 			"-t mangle -A internet -m mark --mark 12 -j RETURN",
 			"-t mangle -A internet -j MARK --set-mark 16",
+			"-t mangle -A internet -j MARK --set-mark 13",
 			"-t mangle -A PREROUTING -m mark --mark 16 -j facebooklist",
 			"-t mangle -A PREROUTING -m mark --mark 16 -j servicios",
 			"-t mangle -A servicios -p tcp --dport 53 -j MARK --set-mark 13",
