@@ -1,0 +1,11 @@
+{
+  "NAME": "WIFREE",
+  "CODENAME": "LITTLE FALCON",
+  "VERSION": "0.35 ALPHA",
+  "BACKEND": "ANGELO CALVO ALFARO",
+  "FRONTEND": "SIMON IRIBARREN",
+  "LASTUPDATE": "16/02/2016",
+  "dependencies": {
+    "express": "~4.12.3"
+  }
+}
