@@ -1,8 +1,9 @@
 #include <iostream>
+#include "config.h"
 using namespace std;
 class wifree{
 	public:
 		wifree(){
-			cout << "Esto es un gato"<< endl;
+			config *c = new config();
 		}
 };

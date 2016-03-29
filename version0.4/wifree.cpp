@@ -1,9 +1,7 @@
 #include <iostream>
-#include "lib/json/json.hpp"
-#include "core/core.h"
+#include "core/wifree.h"
 
 using namespace std;
-using json = nlohmann::json;
 
 int main(int argc, char *argv[]){
 	system("clear");
