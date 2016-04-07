@@ -1,0 +1,336 @@
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+ */
+$navbar-inverse-link-color: #5AADBB;
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+$fa-font-path: "../../bower_components/font-awesome/fonts";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+
+@import "../../bower_components/bootstrap-social/bootstrap-social.css";
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
+
+$red-dx: #ff5754;
+$dark-dx: #4b4c4c;
+$purple-dx: #842887;
+$gray-dx: #efefef;
+
+.background-red {
+  background-color: $red-dx !important;
+}
+
+.background-purple {
+  background-color: $purple-dx !important;
+}
+
+.background-grey {
+  background-color: $gray-dx !important;
+
+}
+
+@media (min-width: 1200px){
+  .offset-lg-55 {
+    margin-left:37.5%;
+
+  }}
+
+.title {
+  font-size: 28px;
+  font-family: 'Lato', 'FontAwesome', verdana, arial, sans-serif;
+
+}
+.title-red {
+  color:$red-dx;
+  @extend.title;
+}
+.title-dark {
+  color: $dark-dx;
+  @extend.title;
+}
+.title-purple {
+  color: $purple-dx;
+  @extend.title;
+}
+
+
+
+.text {
+  font-family: 'Lato', 'FontAwesome', verdana, arial, sans-serif;
+  font-size: 16px;
+  font-weight:300;}
+
+
+.text-dark{
+  @extend .text;
+  color: $dark-dx;
+}
+.text-red {
+  color: $red-dx;
+  @extend .text;
+}
+.text-purple {
+  color: $purple-dx;
+  @extend .text;
+}
+.text-white {
+  color: white;
+  @extend .text;
+}
+.no-pbtm {
+  padding-bottom:0px;
+}
+.no-mgbtm {
+
+  margin-bottom: 0px;
+}
+
+
+.vert-limit-top-12 {
+  padding-top: 12em;
+}
+
+.vert-limit-top-11 {
+  padding-top: 11em;
+}
+
+.vert-limit-top-10 {
+  padding-top: 10em;
+}
+
+.vert-limit-top-9 {
+  padding-top: 9em;
+}
+
+.vert-limit-top-8 {
+  padding-top: 8em;
+}
+
+.vert-limit-top-7 {
+  padding-top: 7em;
+}
+
+.vert-limit-top-6 {
+  padding-top: 6em;
+}
+
+.vert-limit-top-5 {
+  padding-top: 5em;
+}
+
+.vert-limit-top-4 {
+  padding-top: 4em;
+}
+
+.vert-limit-top-3 {
+  padding-top: 3em;
+}
+
+.vert-limit-top-2 {
+  padding-top: 2em;
+}
+
+.vert-limit-top-1 {
+  padding-top: 1em;
+}
+
+.vert-limit-top-0 {
+  padding-top: 0em;
+}
+
+/* Vertical limit Bottom */
+.vert-limit-bottom-12 {
+  padding-bottom: 12em;
+}
+
+.vert-limit-bottom-11 {
+  padding-bottom: 11em;
+}
+
+.vert-limit-bottom-10 {
+  padding-bottom: 10em;
+}
+
+.vert-limit-bottom-9 {
+  padding-bottom: 9em;
+}
+
+.vert-limit-bottom-8 {
+  padding-bottom: 8em;
+}
+
+.vert-limit-bottom-7 {
+  padding-bottom: 7em;
+}
+
+.vert-limit-bottom-6 {
+  padding-bottom: 6em;
+}
+
+.vert-limit-bottom-5 {
+  padding-bottom: 5em;
+}
+
+.vert-limit-bottom-4 {
+  padding-bottom: 4em;
+}
+
+.vert-limit-bottom-3 {
+  padding-bottom: 3em;
+}
+
+.vert-limit-bottom-2 {
+  padding-bottom: 2em;
+}
+
+.vert-limit-bottom-1 {
+  padding-bottom: 1em;
+}
+
+.vert-limit-bottom-0 {
+  padding-bottom: 0em;
+}
+
+/*
+Include this after bootstrap.css. Add class of
+vert-offset-top-value or vert-offset-bottom-value
+to your Bootstrap 3 default rows to prevent row content
+from touching the row content above or below.
+https://gist.github.com/erobert17/9139147
+*/
+
+/* Vertical Offset Bottom */
+
+.vert-offset-top-12 {
+  margin-top: 12em;
+}
+
+.vert-offset-top-11 {
+  margin-top: 11em;
+}
+
+.vert-offset-top-10 {
+  margin-top: 10em;
+}
+
+.vert-offset-top-9 {
+  margin-top: 9em;
+}
+
+.vert-offset-top-8 {
+  margin-top: 8em;
+}
+
+.vert-offset-top-7 {
+  margin-top: 7em;
+}
+
+.vert-offset-top-6 {
+  margin-top: 6em;
+}
+
+.vert-offset-top-5 {
+  margin-top: 5em;
+}
+
+.vert-offset-top-4 {
+  margin-top: 4em;
+}
+
+.vert-offset-top-3 {
+  margin-top: 3em;
+}
+
+.vert-offset-top-2 {
+  margin-top: 2em;
+}
+
+.vert-offset-top-1 {
+  margin-top: 1em;
+}
+
+.vert-offset-top-0 {
+  margin-top: 0em;
+}
+
+/* Vertical Offset Bottom */
+.vert-offset-bottom-12 {
+  margin-bottom: 12em;
+}
+
+.vert-offset-bottom-11 {
+  margin-bottom: 11em;
+}
+
+.vert-offset-bottom-10 {
+  margin-bottom: 10em;
+}
+
+.vert-offset-bottom-9 {
+  margin-bottom: 9em;
+}
+
+.vert-offset-bottom-8 {
+  margin-bottom: 8em;
+}
+
+.vert-offset-bottom-7 {
+  margin-bottom: 7em;
+}
+
+.vert-offset-bottom-6 {
+  margin-bottom: 6em;
+}
+
+.vert-offset-bottom-5 {
+  margin-bottom: 5em;
+}
+
+.vert-offset-bottom-4 {
+  margin-bottom: 4em;
+}
+
+.vert-offset-bottom-3 {
+  margin-bottom: 3em;
+}
+
+.vert-offset-bottom-2 {
+  margin-bottom: 2em;
+}
+
+.vert-offset-bottom-1 {
+  margin-bottom: 1em;
+}
+
+.vert-offset-bottom-0 {
+  margin-bottom: 0em;
+}
+
