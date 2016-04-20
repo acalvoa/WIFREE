@@ -8,6 +8,6 @@
   /** @ngInject */
   function FaceLogController() {
     var vm = this;
-
+  }
 
 })();
